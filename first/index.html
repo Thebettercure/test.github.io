@@ -1,0 +1,194 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Job</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- scroll progress bar -->
+  <div id="progress-line"></div>
+ 
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="#" class="nav-logo">JJ</a>
+    <ul class="nav-links">
+      <li><a href="#early">Early Life</a></li>
+      <li><a href="#professional">Professional</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+ 
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-text" id="hero-bg-text">BUSINESS</div>
+ 
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-label">Personal Portfolio</p>
+        <h1>I'm<br><em>John Job.</em></h1>
+        <p class="hero-subtitle">
+          Business man. Entrepreneur. Visionary. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+        </p>
+        <div class="hero-buttons">
+          <a href="#early" class="btn btn-primary">Read More</a>
+          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        </div>
+      </div>
+ 
+      <div class="hero-image-wrap" id="hero-img">
+        <div class="hero-image-frame">
+          <img src="ph1.png" alt="John Job">
+        </div>
+      </div>
+    </div>
+ 
+    <div class="swoop">
+      <svg viewBox="0 0 1440 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,80 C360,10 900,130 1440,40 L1440,140 L0,140 Z" fill="#0d0d0d"/>
+        <path d="M0,80 C360,10 900,130 1440,40" fill="none" stroke="rgba(249,115,22,0.3)" stroke-width="1.5"/>
+      </svg>
+    </div>
+  </section>
+ 
+  <!-- CONTENT -->
+  <div class="content-wrap">
+ 
+    <section id="early" class="section">
+      <span class="section-tag reveal">01 — Origins</span>
+      <div class="section-divider reveal">
+        <div class="divider-diamond"></div>
+      </div>
+      <h2 class="reveal from-left">Early Life</h2>
+      <span class="highlight-line reveal"></span>
+      <p class="reveal">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+      <p class="reveal">
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </section>
+ 
+    <section id="professional" class="section">
+      <span class="section-tag reveal">02 — Career</span>
+      <div class="section-divider reveal">
+        <div class="divider-diamond"></div>
+      </div>
+      <h2 class="reveal from-right">Professional Life</h2>
+      <span class="highlight-line reveal"></span>
+      <p class="reveal">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+      <p class="reveal">
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </section>
+ 
+    <section id="contact" class="section">
+      <span class="section-tag reveal">03 — Connect</span>
+      <div class="section-divider reveal">
+        <div class="divider-diamond"></div>
+      </div>
+      <h2 class="reveal from-left">Get in Touch</h2>
+      <span class="highlight-line reveal"></span>
+      <p class="reveal">Have a question or want to work together? Feel free to reach out.</p>
+      <a href="mailto:john@example.com" class="contact-link reveal">john@example.com</a>
+    </section>
+ 
+  </div>
+ 
+  <footer>
+    <span class="footer-name">John Job</span>
+    <span class="footer-copy">© 2026 — All rights reserved</span>
+  </footer>
+ 
+  <script>
+    /* ─────────────────────────────────────────
+       SCROLL PROGRESS BAR
+    ───────────────────────────────────────── */
+    const progressLine = document.getElementById('progress-line');
+    function updateProgress() {
+      const scrolled = window.scrollY;
+      const total    = document.body.scrollHeight - window.innerHeight;
+      progressLine.style.width = (scrolled / total * 100) + '%';
+    }
+ 
+    /* ─────────────────────────────────────────
+       NAV SCROLL STATE
+    ───────────────────────────────────────── */
+    const nav = document.getElementById('main-nav');
+    function updateNav() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }
+ 
+    /* ─────────────────────────────────────────
+       PARALLAX — hero bg text + image
+       bg text drifts up, image drifts up slower
+    ───────────────────────────────────────── */
+    const heroBgText = document.getElementById('hero-bg-text');
+    const heroImg    = document.getElementById('hero-img');
+ 
+    function updateParallax() {
+      const sy = window.scrollY;
+      if (sy < window.innerHeight * 1.2) {
+        heroBgText.style.transform = `translateY(${sy * 0.35}px)`;
+        heroImg.style.transform    = `translateY(${sy * 0.12}px)`;
+      }
+    }
+ 
+    /* ─────────────────────────────────────────
+       SCROLL-REVEAL — each .reveal child
+       stagger delay based on position in parent
+    ───────────────────────────────────────── */
+    const reveals = document.querySelectorAll('.reveal');
+ 
+    reveals.forEach(el => {
+      /* give each sibling a slightly later delay */
+      const siblings = [...el.parentElement.querySelectorAll('.reveal')];
+      const idx      = siblings.indexOf(el);
+      el.style.transitionDelay = (idx * 0.09) + 's';
+    });
+ 
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          /* also trigger the highlight-line width */
+          if (entry.target.classList.contains('highlight-line')) {
+            entry.target.style.width = '80px';
+          }
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+ 
+    reveals.forEach(r => revealObserver.observe(r));
+ 
+    /* ─────────────────────────────────────────
+       MASTER SCROLL HANDLER (passive)
+    ───────────────────────────────────────── */
+    function onScroll() {
+      updateNav();
+      updateProgress();
+      updateParallax();
+    }
+ 
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); /* run once on load */
+  </script>
+</body>
+</html>
