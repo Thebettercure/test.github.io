@@ -9,10 +9,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- scroll progress bar -->
   <div id="progress-line"></div>
- 
-  <!-- NAV -->
   <nav id="main-nav">
     <a href="#" class="nav-logo">JJ</a>
     <ul class="nav-links">
@@ -21,8 +18,7 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
- 
-  <!-- HERO -->
+
   <section class="hero" id="hero">
     <div class="hero-bg-text" id="hero-bg-text">BUSINESS</div>
  
@@ -55,7 +51,6 @@
     </div>
   </section>
  
-  <!-- CONTENT -->
   <div class="content-wrap">
  
     <section id="early" class="section">
@@ -117,28 +112,16 @@
   </footer>
  
   <script>
-    /* ─────────────────────────────────────────
-       SCROLL PROGRESS BAR
-    ───────────────────────────────────────── */
     const progressLine = document.getElementById('progress-line');
     function updateProgress() {
       const scrolled = window.scrollY;
       const total    = document.body.scrollHeight - window.innerHeight;
       progressLine.style.width = (scrolled / total * 100) + '%';
     }
- 
-    /* ─────────────────────────────────────────
-       NAV SCROLL STATE
-    ───────────────────────────────────────── */
     const nav = document.getElementById('main-nav');
     function updateNav() {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     }
- 
-    /* ─────────────────────────────────────────
-       PARALLAX — hero bg text + image
-       bg text drifts up, image drifts up slower
-    ───────────────────────────────────────── */
     const heroBgText = document.getElementById('hero-bg-text');
     const heroImg    = document.getElementById('hero-img');
  
@@ -149,15 +132,11 @@
         heroImg.style.transform    = `translateY(${sy * 0.12}px)`;
       }
     }
- 
-    /* ─────────────────────────────────────────
-       SCROLL-REVEAL — each .reveal child
-       stagger delay based on position in parent
-    ───────────────────────────────────────── */
+
     const reveals = document.querySelectorAll('.reveal');
  
     reveals.forEach(el => {
-      /* give each sibling a slightly later delay */
+   
       const siblings = [...el.parentElement.querySelectorAll('.reveal')];
       const idx      = siblings.indexOf(el);
       el.style.transitionDelay = (idx * 0.09) + 's';
@@ -167,7 +146,7 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          /* also trigger the highlight-line width */
+         
           if (entry.target.classList.contains('highlight-line')) {
             entry.target.style.width = '80px';
           }
@@ -178,9 +157,7 @@
  
     reveals.forEach(r => revealObserver.observe(r));
  
-    /* ─────────────────────────────────────────
-       MASTER SCROLL HANDLER (passive)
-    ───────────────────────────────────────── */
+
     function onScroll() {
       updateNav();
       updateProgress();
@@ -188,7 +165,7 @@
     }
  
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); /* run once on load */
+    onScroll(); 
   </script>
 </body>
 </html>
